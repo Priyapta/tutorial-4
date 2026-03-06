@@ -12,5 +12,5 @@ func _on_timer_timeout() -> void:
 	$CollisionShape2D/Sprite2D.visible = false
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/WinScreen.tscn")
