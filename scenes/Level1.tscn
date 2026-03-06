@@ -1,10 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://yqmk0vpvnyxr"]
+[gd_scene format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://76hi8rt1miuo" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_grass.png" id="2_bwv4p"]
+[ext_resource type="Script" uid="uid://dl56ukgjtgejx" path="res://scenes/area_2d.gd" id="3_dw26h"]
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="4_lrl65"]
+[ext_resource type="Script" uid="uid://883pq6w7m6fg" path="res://scenes/node_2d.gd" id="5_lrl65"]
+[ext_resource type="PackedScene" uid="uid://dagwhjgiw7jgj" path="res://scenes/enemy.tscn" id="6_76388"]
+[ext_resource type="Script" uid="uid://cnp7hrhtd60io" path="res://scenes/area_2d_2.gd" id="7_svatc"]
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76388"]
+size = Vector2(293, 485)
 
-[node name="Player" parent="." instance=ExtResource("1")]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw26h"]
+texture = ExtResource("2_bwv4p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -34.848022, 31.460007)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_lrl65"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_dw26h")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svatc"]
+size = Vector2(2034.9108, 91.83476)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecr63"]
+size = Vector2(1417.4426, 91.83476)
+
+[node name="Level1" type="Node2D" unique_id=555862890]
+
+[node name="Player" parent="." unique_id=2147324288 groups=["Player"] instance=ExtResource("1")]
 position = Vector2(445, 209)
 collision_layer = 3
 collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1997379761]
+position = Vector2(-1, 14)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=536986258]
+script = ExtResource("3_dw26h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=519917569]
+position = Vector2(1362, 16)
+shape = SubResource("RectangleShape2D_76388")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1294370035]
+position = Vector2(1359, 14)
+texture = ExtResource("4_lrl65")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1548393818]
+tile_map_data = PackedByteArray("AAAAAAMAAQAHAAEAAAD//wIAAQAHAAEAAAD//wMAAQABAAAAAAACAAMAAQABAAEAAAADAAMAAQACAAEAAAAEAAMAAQACAAEAAAAFAAMAAQADAAEAAAAHAAMAAQAHAAEAAAAIAAMAAQAHAAEAAAAJAAIAAQAHAAEAAAAKAAIAAQAHAAEAAAALAAIAAQAHAAEAAAAJAAMAAQABAAAAAAAKAAMAAQABAAAAAAALAAMAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_lrl65")
+
+[node name="Node2D" type="Node2D" parent="TileMapLayer" unique_id=1256935809]
+position = Vector2(836, 116.99999)
+rotation = -0.01319234
+script = ExtResource("5_lrl65")
+obstacle = ExtResource("6_76388")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=771954348]
+position = Vector2(836, 116.99999)
+rotation = -0.01319234
+script = ExtResource("7_svatc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1688017997]
+position = Vector2(-111.38623, 600.2742)
+rotation = 0.017085802
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_svatc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=363858582]
+position = Vector2(-1081.402, -128.27701)
+rotation = -1.5565401
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_ecr63")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2" unique_id=1736265569]
+position = Vector2(870.5443, -35.518913)
+rotation = -1.5565401
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_ecr63")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

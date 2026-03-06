@@ -1,0 +1,113 @@
+[gd_scene format=4 uid="uid://doctu3eq76373"]
+
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_eqxsl"]
+[ext_resource type="Texture2D" uid="uid://pgvs2eknvuao" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_planet.png" id="1_jm1iu"]
+[ext_resource type="Script" uid="uid://dbli5h3re0243" path="res://spawner_level_2.gd" id="2_pbc48"]
+[ext_resource type="PackedScene" uid="uid://cyb4jw0iql3q3" path="res://scenes/enemy_spawner.tscn" id="4_eqxsl"]
+[ext_resource type="PackedScene" uid="uid://ckn0or60rx2fx" path="res://scenes/final_boss.tscn" id="5_wo48x"]
+[ext_resource type="Script" uid="uid://dh72wffv4m8sw" path="res://scenes/end_way.gd" id="6_y0kc7"]
+[ext_resource type="Texture2D" uid="uid://b40rljghhqx4t" path="res://assets/kenney_platformerpack/PNG/Ground/Planet/planetMid.png" id="7_y0kc7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eqxsl"]
+texture = ExtResource("1_jm1iu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_b4j7a"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_eqxsl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo48x"]
+size = Vector2(173.5, 491)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0kc7"]
+size = Vector2(930.25, 137)
+
+[node name="level2" type="Node2D" unique_id=782134434]
+
+[node name="Player" parent="." unique_id=2093378050 instance=ExtResource("1_eqxsl")]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(81, 420)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1921206299]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1268565410]
+tile_map_data = PackedByteArray("AAABAAQAAAAHAAEAAAACAAQAAAAHAAEAAAADAAQAAAAHAAEAAAAEAAQAAAAHAAEAAAAFAAQAAAAHAAEAAAAGAAQAAAAHAAEAAAAHAAQAAAAHAAEAAAAAAAQAAAAGAAEAAAAIAAQAAAAHAAEAAAAJAAQAAAAHAAEAAAAKAAQAAAAHAAEAAAALAAQAAAAHAAEAAAAMAAQAAAAHAAEAAAANAAQAAAAHAAEAAAAOAAQAAAAHAAEAAAAPAAQAAAAHAAEAAAAQAAQAAAAHAAEAAAARAAQAAAAHAAEAAAASAAQAAAAHAAEAAAATAAQAAAAHAAEAAAAUAAQAAAAHAAEAAAA=")
+tile_set = SubResource("TileSet_b4j7a")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=804112267]
+position = Vector2(1, 0)
+rotation = 3.1415927
+tile_map_data = PackedByteArray("AAD3//7/AAAHAAEAAAD4//7/AAAHAAEAAAD5//7/AAAHAAEAAAD6//7/AAAHAAEAAAD7//7/AAAHAAEAAAD8//7/AAAHAAEAAAD9//7/AAAHAAEAAAD+//7/AAAHAAEAAAD///7/AAAIAAEAAAD2//7/AAAHAAEAAAD1//7/AAAHAAEAAAD0//7/AAAHAAEAAADz//7/AAAHAAEAAADy//7/AAAHAAEAAADx//7/AAAHAAEAAADw//7/AAAHAAEAAADv//7/AAAHAAEAAADu//7/AAAHAAEAAADt//7/AAAHAAEAAADs//7/AAAHAAEAAADr//7/AAAHAAEAAAA=")
+tile_set = SubResource("TileSet_b4j7a")
+
+[node name="spawner" type="Node2D" parent="." unique_id=1251323800]
+position = Vector2(1110, 483)
+script = ExtResource("2_pbc48")
+obstacle = ExtResource("4_eqxsl")
+last_obstacle = ExtResource("5_wo48x")
+
+[node name="Marker2D" type="Marker2D" parent="spawner" unique_id=1052484398]
+position = Vector2(1543, -158)
+
+[node name="Marker2D2" type="Marker2D" parent="spawner" unique_id=1862381370]
+position = Vector2(1545.2693, -6)
+rotation = -0.02731024
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1206720659]
+script = ExtResource("6_y0kc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1175046741]
+position = Vector2(-92, 377)
+shape = SubResource("RectangleShape2D_wo48x")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D" unique_id=1903153352]
+position = Vector2(2.5, -2)
+scale = Vector2(1.3828125, 3.859375)
+texture = ExtResource("7_y0kc7")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=882297129]
+position = Vector2(-298, 715)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D" unique_id=559703219]
+shape = SubResource("RectangleShape2D_y0kc7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Area2D" unique_id=315456590]
+position = Vector2(3403.875, 18)
+shape = SubResource("RectangleShape2D_y0kc7")
+
+[node name="Timer" type="Timer" parent="." unique_id=210580082]
+wait_time = 8.0
+autostart = true
+
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="StaticBody2D" method="_on_timer_timeout"]

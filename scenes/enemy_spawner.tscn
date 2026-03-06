@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cyb4jw0iql3q3"]
+
+[ext_resource type="Script" uid="uid://cbn8ypnkc5xgh" path="res://enemy_spawner.gd" id="1_devoi"]
+[ext_resource type="Texture2D" uid="uid://bfpt4n245ef1h" path="res://assets/kenney_platformerpack/PNG/Items/star.png" id="2_xl0gr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ih16b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31irv"]
+size = Vector2(46, 41)
+
+[node name="enemy_spawner" type="CharacterBody2D" unique_id=341397945]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_devoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=624217266]
+position = Vector2(-1.9073486e-06, -1.9999981)
+scale = Vector2(0.71875, 0.703125)
+texture = ExtResource("2_xl0gr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=482836282]
+shape = SubResource("CircleShape2D_ih16b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=662172374]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=224448585]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_31irv")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

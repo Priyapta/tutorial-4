@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed: int = 400
-@export var gravity: int = 1200
-@export var jump_speed: int = -400
+@export var speed: int = 300
+@export var gravity: int = 800
+@export var jump_speed: int = -450
 
 
 func get_input():
@@ -13,10 +13,13 @@ func get_input():
 		velocity.x += speed
 	if Input.is_action_pressed("left"):
 		velocity.x -= speed
+	
 
 
 func _physics_process(delta):
 	velocity.y += delta * gravity
+	if Input.is_action_pressed("down") and not is_on_floor():
+		velocity.y += 1200 * delta
 	get_input()
 	move_and_slide()
 

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dagwhjgiw7jgj"]
+
+[ext_resource type="Texture2D" uid="uid://c6c1g1mpsppoh" path="res://assets/kenney_platformerpack/PNG/Enemies/fishGreen_dead.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://ku871kkr44ty" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://d3ptr220px2m7" path="res://assets/kenney_platformerpack/PNG/Enemies/fishGreen.png" id="2_4ra3w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
+radius = 41.0
+height = 118.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 38.0
+height = 118.0
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1157784885]
+script = ExtResource("1_md0e3")
+texture = ExtResource("2_4ra3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1786151197]
+position = Vector2(0, -9.536743e-07)
+rotation = -1.5786165
+texture = ExtResource("1_7p1mj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=255722486]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1085837494]
+shape = SubResource("CapsuleShape2D_md0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833908105]
+shape = SubResource("CapsuleShape2D_4ra3w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

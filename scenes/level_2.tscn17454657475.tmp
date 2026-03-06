@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://doctu3eq76373"]
+
+[ext_resource type="Texture2D" uid="uid://pgvs2eknvuao" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_planet.png" id="1_jm1iu"]
+[ext_resource type="Script" uid="uid://dbli5h3re0243" path="res://spawner_level_2.gd" id="2_pbc48"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eqxsl"]
+texture = ExtResource("1_jm1iu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b4j7a"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_eqxsl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo48x"]
+size = Vector2(173.5, 491)
+
+[node name="level2" type="Node2D" unique_id=782134434]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1268565410]
+tile_map_data = PackedByteArray("AAABAAQAAAAHAAEAAAACAAQAAAAHAAEAAAADAAQAAAAHAAEAAAAEAAQAAAAHAAEAAAAFAAQAAAAHAAEAAAAGAAQAAAAHAAEAAAAHAAQAAAAHAAEAAAAAAAQAAAAGAAEAAAAIAAQAAAAHAAEAAAAJAAQAAAAHAAEAAAAKAAQAAAAHAAEAAAALAAQAAAAHAAEAAAAMAAQAAAAHAAEAAAANAAQAAAAHAAEAAAAOAAQAAAAIAAEAAAA=")
+tile_set = SubResource("TileSet_b4j7a")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=804112267]
+position = Vector2(1, 0)
+rotation = 3.1415927
+tile_map_data = PackedByteArray("AAD3//7/AAAHAAEAAAD4//7/AAAHAAEAAAD5//7/AAAHAAEAAAD6//7/AAAHAAEAAAD7//7/AAAHAAEAAAD8//7/AAAHAAEAAAD9//7/AAAHAAEAAAD+//7/AAAHAAEAAAD///7/AAAIAAEAAAD2//7/AAAHAAEAAAD1//7/AAAHAAEAAAD0//7/AAAHAAEAAADz//7/AAAHAAEAAADy//7/AAAHAAEAAADx//7/AAAGAAEAAAA=")
+tile_set = SubResource("TileSet_b4j7a")
+
+[node name="spawner" type="Node2D" parent="." unique_id=1251323800]
+position = Vector2(1110, 483)
+script = ExtResource("2_pbc48")
+
+[node name="Marker2D" type="Marker2D" parent="spawner" unique_id=1052484398]
+position = Vector2(756, -165)
+
+[node name="Marker2D2" type="Marker2D" parent="spawner" unique_id=1862381370]
+position = Vector2(752, 5)
+rotation = -0.02731024
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1606142132]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1175046741]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-92, 377)
+shape = SubResource("RectangleShape2D_wo48x")
