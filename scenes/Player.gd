@@ -13,7 +13,6 @@ func get_input():
 		velocity.x += speed
 	if Input.is_action_pressed("left"):
 		velocity.x -= speed
-	
 
 
 func _physics_process(delta):
