@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dydt4ykhfccbs"]
+
+[ext_resource type="FontFile" uid="uid://bpaegc6lsovqt" path="res://assets/Fonts/CC Wild Words Roman.ttf" id="1_ow34m"]
+[ext_resource type="FontFile" uid="uid://cp20ih21w1lg6" path="res://assets/Fonts/continuum bold.ttf" id="2_l72w3"]
+[ext_resource type="Script" uid="uid://bcrwexnfvrelf" path="res://scripts/link_button.gd" id="3_826wr"]
+[ext_resource type="Texture2D" uid="uid://dwc8dd51xoi1h" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="4_ucygd"]
+
+[node name="MainMenu" type="MarginContainer" unique_id=2082170403]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=474245358]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=939072164]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=320163592]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ow34m")
+theme_override_font_sizes/font_size = 30
+text = "Alien UI"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=887013783]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1637750231]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90588236, 0.17254902, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("2_l72w3")
+theme_override_font_sizes/font_size = 14
+text = "Start Game"
+script = ExtResource("3_826wr")
+scene_to_load = "Level 1"
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=2137514364]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90768075, 0.17251024, 0.2969073, 1)
+theme_override_fonts/font = ExtResource("2_l72w3")
+theme_override_font_sizes/font_size = 14
+text = "StageSelect"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer" unique_id=1380328546]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer" unique_id=1024100149]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("4_ucygd")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
